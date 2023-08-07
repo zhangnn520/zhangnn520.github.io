@@ -1,4 +1,4 @@
-DEBUG=JEKYLL_GITHUB_TOKEN=blank PAGES_API_URL= https://kg-nlp.github.io/Algorithm-Project-Manual/
+DEBUG=JEKYLL_GITHUB_TOKEN=blank PAGES_API_URL= https://zhangnn520.github.io/docs/
 
 default:
 	@gem install jekyll bundler && bundle install
