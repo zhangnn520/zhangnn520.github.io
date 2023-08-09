@@ -16,7 +16,7 @@
 
 ​		在上述五种问答系统中比较常用且落地难度较小的就是FAQ。而要搭建FAQ-Bot最快的方式就是通过ES库来构建，基于ES可以快速构建检索型的智能问答系统，包括“输入联想”，“相似问题检索排序”，“拼音/首字母混合检索”等常见功能。传统的ES仅支持“字面”匹配（BM25算法），最新的ES也已经支持“语义”匹配，所以可以通过深度学习模型提取问题的语义特征（例如sentence-bert），然后存入ES中。这样用户的query就可以与问题库进行“字面”匹配+“语义”匹配了。
 
-![img](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\faq_es.png)
+![img](../../imgs/faq_es.png)
 
 
 
@@ -24,7 +24,7 @@
 
 ​		文章主要讲解了es的安装和使用方法，文章中描述mysql与es数据集需要同时发生变化时，可以使用阿里的[canal](https://github.com/alibaba/canal)。文章也介绍了es的检索方式，支持自定义词典等。
 
-![img](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\cancal.png)
+![img](../../imgs/cancal.png)
 
 ### 1.1.2、[基于FAQ智能问答之召回篇](https://zhuanlan.zhihu.com/p/349993294)  
 
@@ -42,11 +42,57 @@
 
 ​		（3）双路召回。字面召回 + 语义召回” 的双路召回结构，如下图。
 
-![img](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\双路召回.png)
+![img](../../imgs/双路召回.png)
 
 ### 1.1.3、[基于FAQ智能问答之精排篇](https://zhuanlan.zhihu.com/p/352316559)
 
 ​			给定一个用户的问题q，和一批召回的问题d，对每个d进行相关性的打分计算，并根据相关性进行评价。同时根据top1打分的不同，客户端执行不同的操作：(1) 如果top1的评分"很高"，则直接将答案返回给用户 (2) 如果top1的评分"较高"，则进行问题的推荐 (3) 如果top1的评分"较低"，则提示无法回答。
+
+
+
+## 1.2、[Hello NLP专栏](https://www.zhihu.com/column/hellonlp)
+
+### 1.2.1、[对话机器人之闲聊机器人](https://zhuanlan.zhihu.com/p/519181111)
+
+​		闲聊机器人有2个类型，分别是检索式和生成式。本文讲述内容为生成式的闲聊机器人，更准确点说是端到端的生成式聊天机器人。关于端到端的生成方式，确实存在一些问题，例如不可控性，语料成本昂贵，缺乏工业实用性等。但是，优点也很明显，例如可玩性， 生成多样性，发展趋势性等。
+
+![img](../../imgs/闲聊式对话机器人.png)
+
+
+
+
+
+### 1.2.2、[对话机器人之任务型对话](https://zhuanlan.zhihu.com/p/560167584)
+
+​		任务型对话有两大类，分别为Pipeline和end-to-end。
+
+- **Pipeline**
+
+> Pipeline 模式非常灵活，可解释性强，易于落地，各个模块都可以采用不同的技术去替换，模块相互之间可以通过参数传递共享上一轮成果。但是其缺点是不够灵活，各个模块之间相对独立，难以联合调优，并且由于模块之间的误差会层层累积。
+
+- **End-to-End**
+
+> End-to-End模式从用户输入到系统输入作为一个整体去训练，训练一个从用户端自然语言输入到机器端自然语言输出的整体映射关系，具有灵活性强、可拓展性高的特点，减少了设计过程中的人工成本，打破了传统模块之间的隔离，也不存在偏置误差，但是中间的模型过于庞大，端到端模型对数据的数量和质量要求很高，训练困难，并且对于填槽、API 调用等过程的建模不够明确，修改任何一个功能，都需要重新训练整个模型。
+
+![img](../../imgs/任务型对话.png)
+
+​		在方法应用上，我们采用了Pipeline模式，流程：input->NLU->DST->DPL->NLG->output。其中，在NLU部分，使用了意图识别、槽位填充和知识图谱的方法。NLU -> Natural Language Understanding（自然语言理解）,DST -> Dialogue State Tracker（对话状态跟踪）,DPL -> Dialogue Policy learning（对话策略学习）NLG -> Natural Language Generation（自然语言生成）
+
+### 1.2.3、[对话机器人之事实性问答](https://zhuanlan.zhihu.com/p/562160230)
+
+​		事实型问答（FAQ）是一个检索式问答系统，它对于每一个问题（query）都可以找得到最相似的答案。通常情况下，在给定的标准问题库下，系统将用户输入的问题（query）匹配用户最想问的问题上。在数据库中，存储着大量的问答对，其中每个问题都有固定的答案，同时可能会有多个不同的问法。
+
+​        为了更高效更准确的得到最相似的问题，我们将算法过程分为3个步骤:
+
+1. 第一步通过初筛来减少目标数据集的数量，
+2. 第二步通过强匹配看是否可以直接得到结果，如果第二步没有得到结果才会触发第三步，
+3. 第三步是通过文本相似度算法直接计算得到结果。
+
+![img](../../imgs/事实性问答.png)
+
+![img](../../imgs/faq算法流程.png)
+
+
 
 
 
@@ -56,9 +102,9 @@
 
 本项目提供了低成本搭建端到端两路召回语义检索系统的能力。用户只需要处理好自己的业务数据，就可以使用本项目预置的两路召回语义检索系统模型(召回模型、排序模型)快速搭建一个针对自己业务数据的检索系统，并可以提供 Web 化产品服务。
 
-![img](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\paddle双路召回.png)
+![img](../../imgs/paddle双路召回.png)
 
-![img](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\paddlnlp多路召回与语义检索对比.png)
+![img](../../imgs/paddlnlp多路召回与语义检索对比.png)
 
 
 
@@ -66,7 +112,7 @@
 
 ### 2.2.1、系统架构
 
-![image-20230807142843236](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\政务faq系统架构.png)
+![image-20230807142843236](../../imgs/政务faq系统架构.png)
 
 ## 2.2.2、系统特色
 
@@ -100,13 +146,13 @@
 
 ### 2.3.2、问答流程
 
-![img](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\金融问答系统)
+![img](../../imgs/金融问答系统)
 
 ​		如上图所示，问答的流程分为两部分，第一部分是管理员/工程师流程，第二部分就是用户使用流程，在模型的层面，需要离线的准备数据集，训练模型，然后把训练好的模型部署上线。另外，就是线上搭建问答检索引擎，第一步把收集好的语料数据，利用训练好的模型抽取问题的向量，然后把向量插入到近似向量检索引擎中，构建语义索引库，这部分做完了之后，就可以使用这个问答服务了，但是用户输入了Query之后，发生了什么呢？第一步就是线上服务会接收Query后，对数据进行处理，并抽取用户Query的向量，然后在ANN查询模块进行检索匹配相近的问题，最终选取Top10条数据，返回给线上服务，线上服务经过一定的处理，把最终的答案呈现给用户。
 
 ### 2.3.3、模型优化流程
 
-![img](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\金融问答优化流程.png)
+![img](../../imgs/金融问答优化流程.png)
 
 ### 2.3.4、模型 WR 策略
 
@@ -121,11 +167,7 @@
 
 ### 2.4、[多场景对话机器人](https://github.com/charlesXu86/Chatbot_CN)
 
-![](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\Chatbot_CN00.png)
-
-### ![](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\wechatter_1130.png)
-
-
+![](../../imgs/Chatbot_CN00.png)
 
 ### 2.5、[FAQ智能问答系统](https://github.com/wzzzd/FAQ_system)
 
@@ -137,7 +179,7 @@
 
 ​		系统支持有监督和无监督语义表征训练，也同样支持精排和粗排召回。上述功能均可在配置文件中进行配置。但是目前系统最大的缺点就是系统推理速度很慢，即使使用gpu效果依旧很慢。
 
-![image-20230807144212020](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\FAQ智能问答系统架构.png)
+![image-20230807144212020](../../imgs/FAQ智能问答系统架构.png)
 
 ### 2.5.3、查询流程
 
@@ -145,33 +187,31 @@
 输入query文本 -> 分词 -> 召回（ES） -> 粗序（PreRank） -> 精排（Rank） -> result
 ```
 
-
-
 ### 2.5.4、性能指标
 
 ​		在100个样本的测试集中，分别统计top1、top3、top10的召回结果准确率。
 
-![img](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\召回指标.png)
+![img](../../imgs/召回指标.png)
 
-## 2.6、[简易问答系统demo:faq-qa-sys](https://github.com/lerry-lee/faq-qa-sys)
+## 2.6、[简易问答系统demo](https://github.com/lerry-lee/faq-qa-sys)
 
 一个简单的FAQ问答系统实现。基于检索和排序的两阶段框架，检索阶段基于Elasticsearch检索引擎、排序阶段基于语义匹配深度学习模型。后端基于SpringBoot系列框架。
 
 ### 2.6.1、系统示意图
 
-![](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\faq-qa-sys流程.png)
+![](../../imgs/faq-qa-sys流程.png)
 
 ### 2.6.2、系统架构图
 
-![](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\faq-qa-sys.png)
+![](../../imgs/faq-qa-sys.png)
 
 ### 2.6.3、对话流程图
 
-![](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\对话流程.png)
+![](../../imgs/对话流程.png)
 
 ### 2.6.4、多轮对话设计
 
-![](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\多轮树.png)
+![](../../imgs/多轮树.png)
 
 
 
@@ -196,15 +236,68 @@
 
 
 
-2.7.2系统框架
+### 2.7.2系统框架
 
-![BEFAQ 框架](C:\Users\Administrator\Downloads\zhangnn520.github.io\imgs\BEFAQ 框架.png)
+![BEFAQ 框架](../../imgs/BEFAQ 框架.png)
 
 ## 三、经典算法
 
+## 3.1、[BM25](https://zhuanlan.zhihu.com/p/499906089)
+
+​		文本匹配包括监督学习方法以及非监督学习方法。或者分为传统方法和深度学习方法。传统的非监督学习方法有：Jaccard，Levenshtein（编辑距离），Simhash，BM25，VSM（向量空间）等，最具代表的算法当属BM25。其在著名的搜索解决方案Elastic中就有相关的使用。
+
+原文：https://mp.weixin.qq.com/s/A4OOmG6YTL0ga6rarNoiwA
+
+源码：
+		(1)https://www.jianshu.com/p/1e498888f505
+
+​		(2)https://github.com/zhusleep/fastbm25
+
+![image-20230808162406745](../../imgs/BM25.png)
 
 
 
+
+
+<img src="../../imgs/bm25-1.png" alt="image-20230808164519148" style="zoom:200%;" />
+
+## 3.2、[simcse](https://zhuanlan.zhihu.com/p/368353121)
+
+**论文:** **[SimCSE: Simple Contrastive Learning of Sentence Embeddings](https://link.zhihu.com/?target=https%3A//arxiv.org/abs/2104.08821)**
+
+**源码:** **[princeton-nlp/SimCSE](https://link.zhihu.com/?target=https%3A//github.com/princeton-nlp/SimCSE)**
+
+​		SimCSE 将对比学习（Contrastive Learning）的思想引入到了文本匹配中。对比学习的核心思想就是：将相似的样本拉近，将不相似的样本推远。
+
+![img](../../imgs/simcse模型对比.png)
+
+### 3.2.1、[simcse原理](https://www.zhihu.com/question/526288696/answer/2848119153)
+
+​		SimCSE 将对比学习（Contrastive Learning）的思想引入到了文本匹配中。对比学习的核心思想就是：将相似的样本拉近，将不相似的样本推远。但现在问题是：我们没有标注数据，怎么知道哪些文本是相似的，哪些是不相似的呢？
+
+​		SimCSE 相出了一种很妙的办法，由于预训练模型在训练的时候通常都会使用 **dropout** 机制。这就意味着：即使是同一个样本过两次模型也会得到两个不同的 embedding。而因为同样的样本，那一定是相似的，模型输出的这两个 embedding 距离就应当尽可能的相近；反之，那些不同的输入样本过模型后得到的 embedding 就应当尽可能的被推远。
+
+![](../../imgs/simcse原理介绍.png)
+
+### 3.2.2、 SimCSE 缺点
+
+从 SimCSE 的正例构建中我们可以看出来，所有的正例都是由「同一个句子」过了两次模型得到的。这就会造成一个问题：模型会更倾向于认为，长度相同的句子就代表一样的意思。由于数据样本是随机选取的，那么很有可能在一个 batch 内采样到的句子长度是不相同的。
+
+对于它的缺点解决方案就是Esimces
+
+![img](../../imgs/simcse缺点.png)
+
+
+
+## 3.3、m3e
+
+
+
+## 3.4、bge
+
+3.5、sentence
+
+3.6、bert whitening
 
 ## 四、字面和向量库：
 
@@ -216,15 +309,148 @@
 
 ​	（2）[milvus开源的数据库](https://mp.weixin.qq.com/s?__biz=MzAwOTU4NzM5Ng==&mid=2455772667&idx=1&sn=ead133d70c53c2dbe1483921c1597cc9&chksm=8cc9e250bbbe6b460ccc5a9faa5274ddf48861efd5484fd5b6445661c9fe06ad632732b463c2&scene=178&cur_album_id=3006183510551822339#rd)
 
+
+
 ### 4.2、faiss
 
 ​	（1）[faiss开源的向量索引库](https://mp.weixin.qq.com/s?__biz=MzAwOTU4NzM5Ng==&mid=2455772648&idx=1&sn=6bfb1c6ee9b7ca5e21fc76583e5d4680&chksm=8cc9e243bbbe6b55b4c207d997bafe75f364aa21cbcf4f7efb09ba39460441dbcc67e2e224f3&scene=178&cur_album_id=3006183510551822339#rd)
 
 ​	（2）
 
+
+
 ### 4.3、elasticsearch
 
 ​	(1）[使用向量字段进行文本相似度搜索](https://www.elastic.co/cn/blog/text-similarity-search-with-vectors-in-elasticsearch)
+
+ （2）[Elasticsearch: 基于Text Embedding的文本相似性搜索](https://zhuanlan.zhihu.com/p/80737146)
+
+​	(3)[Elasticsearch：如何部署 NLP：文本嵌入和向量搜索](https://blog.csdn.net/UbuntuTouch/article/details/124920166)
+
+```python
+es_search_params = {
+    "port": 9200,
+    "host": '192.168.0.10',
+    "index": "faq_index",
+    "model_path": '/home/znn/service/faq/test/bge-large-zh'
+}
+
+class ES_Processor:
+    def __init__(self):
+        self.index = es_search_params['index']
+        self.model_path = es_search_params['model_path']
+        self.es = self._es_run()
+
+    def _es_run(self):
+        _es_run = Elasticsearch([{'host': es_search_params['host'], 'port': es_search_params['port']}])
+        return _es_run
+
+    def get_embedding_vector(self, _sentence_list):
+        model = FlagModel(self.model_path,
+                          query_instruction_for_retrieval="为这些句子生成表示以用于检索相关文章：")
+        _sentence_list = _sentence_list if not isinstance(es_processor, str) else [_sentence_list]
+        embeddings = model.encode(_sentence_list)
+        return embeddings
+
+    def insert_vector(self, embeddings, sentence_list):
+        # 确保索引不存在
+        if self.es.indices.exists(index=self.index):
+            self.es.indices.delete(index=self.index)
+
+        # 创建一个新的索引
+        self.es.indices.create(index=self.index, body={
+            "settings": {
+                "analysis": {
+                    "analyzer": {
+                        "ik_analyzer": {
+                            "type": "custom",
+                            "tokenizer": "ik_max_word"
+                        }
+                    }
+                }
+            },
+            "mappings": {
+                "properties": {
+                    "question": {
+                        "type": "text",
+                        "analyzer": "ik_analyzer"
+                    },
+                    "vector": {
+                        "type": "dense_vector",
+                        "dims": embeddings.shape[1]  # 假设您使用的向量长度为768
+                    }
+                }
+            }
+        })
+
+        # 存储到Elasticsearch
+        for _num, sentence in enumerate(tqdm(sentence_list)):
+            try:
+                sentence_emb1 = embeddings[_num]
+                self.es.index(index=self.index, body={"question": sentence, "vector": sentence_emb1})
+            except Exception as e:
+                print(f"数据存储异常:{e}，问题文本为：{sentence}")
+            else:
+                print("数据文本和词向量写入es成功！！")
+
+    def text_and_vector_search_query(self, question, query_vector, min_score):
+        query_body = {
+            "query": {
+                "bool": {
+                    "should": [
+                        {"match": {"text": question}},
+                        {
+                            "script_score": {
+                                "query": {"match_all": {}},
+                                "script": {
+                                    "source": "cosineSimilarity(params.query_vector, 'vector') + 1.0",
+                                    "params": {
+                                        "query_vector": query_vector
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "min_score": min_score
+        }
+        return query_body
+
+    def check_vector(self, question, query_vector, _min_score, k_top=10):
+        _query_check_body = self.text_and_vector_search_query(question, query_vector, _min_score)
+        response = self.es.search(index=self.index, body=_query_check_body, size=k_top)
+        for hit in response['hits']['hits']:
+            print({"match_score": hit['_score'], "question": hit['_source']['question']})
+
+    def check_text(self, question, min_score, k_top=10):
+        # 定义查询
+        text_query = {
+            "query": {
+                "match": {
+                    "question": question
+                }
+            },
+            "min_score": min_score
+        }
+
+        # 执行查询
+        response = self.es.search(index=self.index, body=text_query, size=k_top)  # 替换your_index_name为你的索引名
+        # index - 索引名
+        # q - 查询指定匹配 使用Lucene查询语法
+        # from_ - 查询起始点  默认0
+        # doc_type - 文档类型
+        # size - 指定查询条数 默认10
+        # field - 指定字段 逗号分隔
+        # sort - 排序  字段：asc/desc
+        # body - 使用Query DSL
+        # scroll - 滚动查询
+        # 输出查询结果
+        for hit in response['hits']['hits']:
+            print({"match_score": hit['_score'], "question": hit['_source']['question']})
+```
+
+
 
 ## 五、数据清洗：
 
@@ -236,7 +462,7 @@
 
 ​      (4) 语言清洗。去除文本中的拼写错误，语法错误，使用统一的词汇和表达方式。
 
-​     (5) 数据填充。如果某些重要的问题或答案缺失了，你可能需要填充它们。你可以使用一些预设的值，或者是使用一些算法来预测它们。
+​     (5) 数据填充。如果某些重要的问题或答案缺失了，你可能需要填充它们。
 
 ​     (6) 数据分割。对于FAQ数据集，可能需要将问题和答案分开，存储在不同的列或者数据结构中。
 
@@ -246,17 +472,11 @@
 
 （2）[FAQ数据集调研](https://zhuanlan.zhihu.com/p/83211462)
 
-
-
-## 七、技术方案：
-
-​	（1）第一版faq就用paddle的simcse+milvus+rocketqa_crossencoder，后续上线版本主要对粗排进行处理，增加bm25等，不能用单一的召回方式。
-​	（2）第二版采用m3e+milvius2.x+多路召回+rocketqa或许其他精排方法，可以尝试一下es数据库，也可以对召回的问答对基于multilinggual-e5-large用于检索qa的相关性提高召回的精准度。
-​	（3）第三版就是llm+faq，第三版应为测试和研究版本，用于对第一版或第二版进行词向量部分进行改造，使用大模型的词向量进行处理。
+（3）[SimCSE 实战数据集](https://zhuanlan.zhihu.com/p/634871699)
 
 
 
-## 八、主要参考资料：
+## 七、主要参考资料：
 
 ​	1、[如何搭建基于文本语义的智能问答系统？](https://www.zhihu.com/question/555696715/answer/2736787407)
 
@@ -281,3 +501,7 @@
 ​	11、https://github.com/lerry-lee/faq-qa-sys
 
 ​	12、https://www.elastic.co/cn/blog/text-similarity-search-with-vectors-in-elasticsearch
+
+​	13、https://www.zhihu.com/column/hellonlp
+
+​	14、https://www.zhihu.com/question/526288696/answer/2848119153
