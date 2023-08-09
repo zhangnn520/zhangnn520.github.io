@@ -5,7 +5,7 @@
 
 ## 正在更新
 
-* [问答系统](https://zhangnn520.github.io/docs/问答系统)
+* [问答系统](https://github.com/zhangnn520/zhangnn520.github.io/blob/main/docs/%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/FAQ%E9%97%AE%E7%AD%94.md)
 
   
 
