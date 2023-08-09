@@ -7,7 +7,7 @@
 
 ## 正在更新
 
-* [问答系统](https://zhangnn520.github.io/zhangnn520.github.io/问答系统/)
+* [问答系统](https://zhangnn520.github.io/docs/问答系统/)
 
   
 
