@@ -16,7 +16,7 @@
 
 ​		在上述五种问答系统中比较常用且落地难度较小的就是FAQ。而要搭建FAQ-Bot最快的方式就是通过ES库来构建，基于ES可以快速构建检索型的智能问答系统，包括“输入联想”，“相似问题检索排序”，“拼音/首字母混合检索”等常见功能。传统的ES仅支持“字面”匹配（BM25算法），最新的ES也已经支持“语义”匹配，所以可以通过深度学习模型提取问题的语义特征（例如sentence-bert），然后存入ES中。这样用户的query就可以与问题库进行“字面”匹配+“语义”匹配了。
 
-![img](https://github.com/zhangnn520/zhangnn520.github.io/blob/main/imgs/faq_es.png)
+![img](https://github.com/zhangnn520/zhangnn520.github.io/blob/main/imgs/BEFAQ%20%E6%A1%86%E6%9E%B6.png)
 
 
 
