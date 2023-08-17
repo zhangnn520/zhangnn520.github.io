@@ -1,15 +1,12 @@
 ---
-sort: 4
+sort:
 ---
 
-# 文档解析
+# 大模型调研
 
+大模型调研目前分了四个部分，分别是大模型迭代跟踪、垂直领域模型构建、知识库&信息抽取&安全对话和其他资料汇总。
 
-* [文档规则解析](https://kg-nlp.github.io/Algorithm-Project-Manual/文档解析/文档规则解析.html)
-
-
-## 参考
-
-* [文档智能应用
-](https://github.com/PaddlePaddle/PaddleNLP/tree/develop/applications/document_intelligence)
-* [OCR解析](https://github.com/PaddlePaddle/PaddleOCR/blob/release/2.6/README_ch.md)
+1. 大模型更新迭代追踪
+2. 大模型垂直领域模型构建
+3. 知识库&信息抽取&安全对话
+4. 大模型其他资料汇总
