@@ -1,13 +1,15 @@
-大模型追踪
+---
+sort: 4
+---
+
+# 文档解析
 
 
+* [文档规则解析](https://kg-nlp.github.io/Algorithm-Project-Manual/文档解析/文档规则解析.html)
 
-主要可以分为以下几个方面：
 
-1、大模型更新迭代追踪；
+## 参考
 
-2、知识库&信息抽取&安全对话
-
-3、大模型垂直领域模型构建
-
-4、大模型其他资料汇总
+* [文档智能应用
+](https://github.com/PaddlePaddle/PaddleNLP/tree/develop/applications/document_intelligence)
+* [OCR解析](https://github.com/PaddlePaddle/PaddleOCR/blob/release/2.6/README_ch.md)
