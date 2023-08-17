@@ -7,9 +7,8 @@
 
 ## 正在更新
 
-* [问答系统](https://zhangnn520.github.io/zhangnn520.github.io/问答系统/)
-
-  
+- [对话系统](https://zhangnn520.github.io/%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/)
+- [大模型调研](https://zhangnn520.github.io/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%B0%83%E7%A0%94/)
 
 ## 等待迁移
 
