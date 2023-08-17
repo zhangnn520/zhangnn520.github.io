@@ -1,0 +1,45 @@
+# Table of contents
+
+* [🥳 Summary](README.md)
+
+## 🐰 TOTOTOlearn
+
+* [⚒ Evaluate](tototolearn/evaluate.md)
+* [🙇♂ Lossless Compression](tototolearn/lossless-compression/README.md)
+  * [🧠 Compressing for AGI](tototolearn/lossless-compression/compressing-for-agi.md)
+* [👼 Tutorials\&Workshops](Tutorial\&Workshop/README.md)
+  * [🥰 Introduction to Algorithms](tototolearn/tutorial-and-workshop/introduction-to-algorithms/README.md)
+    * [🐶 The Role of Algorithms in Computing](tototolearn/tutorial-and-workshop/introduction-to-algorithms/the-role-of-algorithms-in-computing.md)
+  * [🧎♀ ACL 2023 Tutorial: Retrieval-based Language Models and Applications](Tutorial\&Workshop/acl2023-retrieval-lm.md)
+  * [🐧 Real\_PEFT](Tutorial\&Workshop/real\_PEFT.md)
+* [🧕 Personality Traits\&Bias in LLM](tototolearn/personality-traits-and-bias-in-llm/README.md)
+  * [👹 Personality Traits in Large Language Models](tototolearn/personality-traits-and-bias-in-llm/personality-traits-in-large-language-models.md)
+* [🔥 openLLM](tototolearn/openllm/README.md)
+  * [🦅 Aquila 悟道天鹰系列](tototolearn/openllm/aquila-wu-dao-tian-ying-xi-lie.md)
+  * [🌊 百川大模型](tototolearn/openllm/bai-chuan-da-mo-xing.md)
+* [🌜 AI Agents](tototolearn/ai-agents/README.md)
+  * [🍞 Learning to Model the World with Language](tototolearn/ai-agents/learning-to-model-the-world-with-language.md)
+  * [🪵 ToolLLM](tototolearn/ai-agents/toolllm.md)
+* [👾 MLLM](tototolearn/mllm/README.md)
+  * [🐐 LLaVA: Large Language and Vision Assistant](tototolearn/mllm/llava-large-language-and-vision-assistant.md)
+* [📃 Surveys](tototolearn/surveys.md)
+* [🙇♀ POSTS](tototolearn/posts/README.md)
+  * [🔆 拆解追溯 GPT-3.5 各项能力的起源](tototolearn/posts/chai-jie-zhui-su-gpt3.5-ge-xiang-neng-li-de-qi-yuan.md)
+
+## 🤖 TOTOTODO
+
+* [🌚 Challenges and Applications of Large Language Models](tototodo/challenges-and-applications-of-large-language-models/README.md)
+  * [😼 Open Problems and Fundamental Limitations of Reinforcement Learning from Human Feedback](tototodo/challenges-and-applications-of-large-language-models/open-problems-and-fundamental-limitations-of-reinforcement-learning-from-human-feedback.md)
+  * [👏 Challenges and Applications of Large Language Models](tototodo/challenges-and-applications-of-large-language-models/challenges-and-applications-of-large-language-models.md)
+  * [🙆 模型安全--A Watermark for Large Language Models](tototodo/challenges-and-applications-of-large-language-models/mo-xing-an-quanawatermark-for-large-language-models.md)
+  * [🏸 Inword： Bring games to life with AI NPCs](tototodo/challenges-and-applications-of-large-language-models/inword-bring-games-to-life-with-ai-npcs.md)
+  * [💦 Brain in a Vat: On Missing Pieces Towards Artificial General Intelligence in Large Language Models](tototodo/challenges-and-applications-of-large-language-models/brain-in-a-vat-on-missing-pieces-towards-artificial-general-intelligence-in-large-language-models.md)
+* [😃 炼丹工具箱](tototodo/lian-dan-gong-ju-xiang/README.md)
+  * [🌐 Megatron-LM -nvidia](tototodo/lian-dan-gong-ju-xiang/megatron-lm-nvidia.md)
+  * [🌸 Colossal-AI: 让AI大模型更低成本、方便易用、高效扩展](tototodo/lian-dan-gong-ju-xiang/colossalai-rang-ai-da-mo-xing-geng-di-cheng-ben-fang-bian-yi-yong-gao-xiao-kuo-zhan.md)
+  * [🙆♂ BMInf -- 一个用于PLM推理阶段的低资源工具包](tototodo/lian-dan-gong-ju-xiang/bminf-yi-ge-yong-yu-plm-tui-li-jie-duan-de-di-zi-yuan-gong-ju-bao.md)
+  * [🦈 LLaMA-Efficient-Tuning\&text-generation-webui](tototodo/lian-dan-gong-ju-xiang/llama-efficient-tuning-and-text-generation-webui.md)
+  * [🪐 Paramters and Definations](tototodo/lian-dan-gong-ju-xiang/paramters-and-definations.md)
+  * [🦙 Chinese-Vicuna: A Chinese Instruction-following LLaMA-based Model —— 一个中文低资源的llama+lora方案](tototodo/lian-dan-gong-ju-xiang/chinesevicunaachinese-instructionfollowing-llamabased-model-yi-ge-zhong-wen-di-zi-yuan-de-llama+lora.md)
+  * [🥳 PEFT doc-cn](tototodo/lian-dan-gong-ju-xiang/peft-doc-cn/README.md)
+    * [🥳 Quickstart](tototodo/lian-dan-gong-ju-xiang/peft-doc-cn/quickstart.md)
