@@ -195,3 +195,109 @@ class ES_Processor:
             print({"match_score": hit['_score'], "question": hit['_source']['question']})
 ```
 
+## 四、es精确查询实操
+
+### 4.1、背景简介
+
+​		我想通过es精确查询某个question，发现之前灌入数据并没有建立对应的索引，而是直接将数据灌入进去的，这导致数据查询不能做到完全精确匹配对应的内容。存入es的数据一般默认会做分词处理，即使库里存有你跟问的问题一模一样的数据，也有可能查询不出来。原因如下：
+
+![image-20230829113527174](./elasticsearch.assets/es存储和查询.png)
+
+### 4.2、es数据存储
+
+（1）数据格式如下图
+
+![image-20230829112000591](./elasticsearch.assets/es存入库的数据格式.png)
+
+（2）根据查询内容，比如按照question 和answer查询可以设置keyword查询，建立对应的索引
+
+![image-20230829112531545](./elasticsearch.assets/es索引.png)
+
+（3）部分数据插入代码，其他索引不建立则默认为动态索引，不影响查询和存储
+
+```pyton
+def insert_data(self, data_list):
+    if self.es.indices.exists(index=self.index):
+        self.es.indices.delete(index=self.index)
+
+    self.es.indices.create(index=self.index,
+                           body={
+                               "mappings": {
+                                   "properties": {
+                                       "question": {
+                                           "type": "text",
+                                           "fields": {
+                                               "raw": {
+                                                   "type": "keyword"
+                                               }
+                                           }
+                                       },
+                                       "answer": {
+                                           "type": "text",
+                                           "fields": {
+                                               "raw": {
+                                                   "type": "keyword"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           })
+
+    # 将数据插入到Elasticsearch
+    def generate_bulk_data(index_name, list_of_dicts):
+        for doc in tqdm(list_of_dicts):
+            yield {
+                "_op_type": "index",
+                "_index": index_name,
+                "_source": doc
+            }
+
+    helpers.bulk(self.es, generate_bulk_data(self.index, data_list))
+```
+
+### 4.3、es精确查询
+
+​		上述建立索引同时支持模糊查询和精确查询，现在这里仅仅介绍精确查询。模糊查询结果如下图所示。
+
+![image-20230829114410340](./elasticsearch.assets/模糊查询.png)
+
+```
+def get_single_sentence(self, sentence_content):
+    response = self.es.search(index=self.index, body={
+        "query": {
+            "term": {
+                "question.raw": {
+                    "value": sentence_content,
+                }
+            }
+        }
+    })
+    print(response)
+    hits = response["hits"]["hits"]
+
+    if hits:
+        return hits[0]
+    else:
+        return None
+```
+
+​		精确查询示意图如下图，如果存在检索的对应答案答案，会直接返回，如果没有对应答案直接返回NONE。
+
+![image-20230829114509897](./elasticsearch.assets/精确查询.png)
+
+### 4.4、注意事项
+
+（1）在测试过程中发现，插入数据和查询数据不同同时进行，如果同时操作，会出现查询不到结果的情况。
+
+
+
+
+
+## 5、参考资料
+
+（1）https://blog.csdn.net/qq_36095679/article/details/106546261
+
+## 6、备注
+
+​		。。。。更新中
