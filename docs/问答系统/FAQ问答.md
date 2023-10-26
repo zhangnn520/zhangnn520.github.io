@@ -240,9 +240,87 @@
 
 ![BEFAQ 框架](./FAQ问答.assets/BEFAQ 框架.png)
 
-## 三、经典算法
 
-## 3.1、[BM25](https://zhuanlan.zhihu.com/p/499906089)
+
+## 三、QA问答系统最新研究
+
+### 3.1、可解释的长篇法律问题回答检索增强的大型语言模型
+
+**Paper：**https://arxiv.org/pdf/2309.17050v1.pdf
+
+**Code：**https://github.com/maastrichtlawtech/lleqa
+
+![图片](D:\NLP\zhangnn520.github.io\docs\问答系统\FAQ问答.assets\lqa问答系统架构图.png)
+
+​		本文作者提出了一种端到端的方法，**「旨在利用“先检索后阅读”的管道生成任何成文法问题的长格式答案」**。为了支持这种方法，作者发布了长格式法律问答 (LLeQA) 数据集，其中包含 1,868 个由专家注释的法语法律问题，并包含基于相关法律条款的详细答案。
+
+### 3.2、基于期望最大化证据推理的医学问答解释生成
+
+**Paper：**https://arxiv.org/pdf/2310.01299v1.pdf
+
+​		医疗问答（医疗 QA）系统在协助医护人员寻找问题答案方面发挥着重要作用。然而，仅通过医学 QA 系统提供答案是不够的，因为用户可能需要解释，即用自然语言进行更多分析性陈述，描述支持答案的元素和上下文。
+
+ 	为此，本文研究提出了一种新方法，**「为医学 QA 系统预测的答案生成自然语言解释」**。由于高质量的医学解释需要额外的医学知识，因此我们的系统在解释生成过程中从医学教科书中提取知识以提高解释的质量。
+
+![图片](D:\NLP\zhangnn520.github.io\docs\问答系统\FAQ问答.assets\医学问答解释生成.png)
+
+​		作者设计了一种期望最大化方法，可以对这些文本中发现的证据进行推断，提供一种有效的方法来将注意力集中在冗长的证据段落上。在数据集MQAE-diag、MQAE上证明了文本证据推理框架的有效性，并且本文方法优于最先进的模型。
+
+### 3.3、MINPROMPT:基于图形的最小提示数据增强，用于小样本问答
+
+**Paper：**https://arxiv.org/pdf/2310.05007v1.pdf
+
+​		小样本问答（Few-shot QA）旨在少量训练样本的情况下，让模型给出令人满意的回答。最新的研究进展主要依赖大型语言模型（LLM）。尽管预训练阶段已经让LLM具备了强大的推理能力，但LLM仍需要进行微调以适应特定领域，以达到最佳结果。为此，作者建议选择信息最丰富的数据进行微调，从而提高微调过程的效率。
+
+![图片](D:\NLP\zhangnn520.github.io\docs\问答系统\FAQ问答.assets\minprompt.png)
+
+​		本文研究提出了**「MinPrompt」**，一个基于近似图算法和无监督问题生成的开放域QA的最小数据增强框架。作者将原始文本转换为图形结构，以在不同的事实句子之间建立联系，然后应用图形算法来识别原始文本中最多信息所需的最小句子集。然后，根据识别的句子子集生成问答对，并在选定的句子上训练模型以获得最终模型。实证结果表明，MinPrompt 能够以高效率实现与基线相当或更好的结果。
+
+
+
+### 3.4、MemSum-DQA:采用高效的长文档抽取摘要器进行文档问答
+
+**Paper：**https://arxiv.org/pdf/2310.06436v1.pdf
+
+**Code：**https://github.com/nianlonggu/MemSum-DQA
+
+ 	本文作者提出了**「MemSum-DQA，这是一种高效的文档问答 (DQA) 系统」**，它利用了MemSum（一种长文档提取摘要器），通过在解析文档中的每个文本块中添加所提供的问题和问题类型的前缀，MemSum-DQA 有选择地从文档中提取文本块作为答案。
+
+![图片](D:\NLP\zhangnn520.github.io\docs\问答系统\FAQ问答.assets\长文档提取摘要器.png)
+
+​			在完整文档回答任务中，与之前最先进的基线相比，这种方法的精确匹配精度提高了9%。值得注意的是，**「MemSum-DQA 擅长解决与子关系理解相关的问题」**，强调了提取摘要技术在 DQA 任务中的潜力。
+
+
+
+### 3.5、qaddynamics:训练动态驱动的综合QA诊断，用于零样本常识问答
+
+**Paper：**https://arxiv.org/pdf/2310.11303v1.pdf
+
+**Code：**https://github.com/HKUST-KnowComp/QaDynamics
+
+​		Zero-shot常识问答 (QA) 要求模型能够进行一般情况的推理。最先进的方法一般做法是根据常识知识库 (CSKB) 构建的QA对，并对语言模型进行微调，使其能够具备更多的常识知识。但在此过程中，QA对构建过程中可能会引入来自 CSKB 的噪声，从而生成不符合预期的语法问答对，这会阻碍模型的泛化能力。
+
+ 	为此，本文提出了**「QADYNAMICS，一种用于QA诊断和改进的动态驱动框架」**。该方法分析了QA对在问答、选项两个方面上的训练动态，通过删除无信息QA对、错误标记、错误选项来简化训练检测组件。大量的实验证明了本文方法的有效性，仅使用33%的合成数据就超过了所有基线模型，其中包括ChatGPT等大模型。并且通过专家评估证实：该框架显着提高了 QA 合成的质量。
+
+### 3.6、Chatkbqa:一个用于知识库问题回答的生成-检索框架
+
+**Paper：**https://arxiv.org/pdf/2310.08975v1.pdf
+
+**Code：**https://github.com/LHRLAB/ChatKBQA
+
+ 	知识问答（KBQA）旨在通过检索大型知识库（KB）得出问题答案，该研究通常分为两个部分：知识检索和语义解析。但是目前KBQA仍然存在3个主要挑战：知识检索效率低下、检索错误影响语义解析结果以及先前KBQA方法的复杂性。在大型语言模型 (LLM) 时代，作者引入了**「ChatKBQA，这是一种新型生成再检索KBQA 框架」**，它建立在微调开源LLM的基础上，例如 Llama-2、ChatGLM2 和 Baichuan2。
+
+![图片](D:\NLP\zhangnn520.github.io\docs\问答系统\FAQ问答.assets\知识检索QA问答.png)
+
+​		ChatKBQA提出首先使用微调的LLM生成逻辑形式，然后通过无监督检索方法检索和替换实体、关系，这直接地改进了生成和检索。实验结果表明，ChatKBQA在标准KBQA数据集、WebQSP和ComplexWebQuestions (CWQ)上实现了最先进的性能。本文研究还提供了一种将LLMs与知识图谱（KG）相结合的新范式，以实现可解释的、基于知识的问答。
+
+
+
+
+
+## 四、经典算法
+
+## 4.1、[BM25](https://zhuanlan.zhihu.com/p/499906089)
 
 ​		文本匹配包括监督学习方法以及非监督学习方法。或者分为传统方法和深度学习方法。传统的非监督学习方法有：Jaccard，Levenshtein（编辑距离），Simhash，BM25，VSM（向量空间）等，最具代表的算法当属BM25。其在著名的搜索解决方案Elastic中就有相关的使用。
 
@@ -261,7 +339,7 @@
 
 <img src="./FAQ问答.assets/bm25-1.png" alt="image-20230808164519148" style="zoom:200%;" />
 
-## 3.2、[simcse](https://zhuanlan.zhihu.com/p/368353121)
+## 4.2、[simcse](https://zhuanlan.zhihu.com/p/368353121)
 
 **论文:** **[SimCSE: Simple Contrastive Learning of Sentence Embeddings](https://link.zhihu.com/?target=https%3A//arxiv.org/abs/2104.08821)**
 
@@ -271,7 +349,7 @@
 
 ![img](./FAQ问答.assets/simcse模型对比.png)
 
-### 3.2.1、[simcse原理](https://www.zhihu.com/question/526288696/answer/2848119153)
+### 4.2.1、[simcse原理](https://www.zhihu.com/question/526288696/answer/2848119153)
 
 ​		SimCSE 将对比学习（Contrastive Learning）的思想引入到了文本匹配中。对比学习的核心思想就是：将相似的样本拉近，将不相似的样本推远。但现在问题是：我们没有标注数据，怎么知道哪些文本是相似的，哪些是不相似的呢？
 
@@ -279,7 +357,7 @@
 
 ![](./FAQ问答.assets/simcse原理介绍.png)
 
-### 3.2.2、 SimCSE 缺点
+### 4.2.2、 SimCSE 缺点
 
 从 SimCSE 的正例构建中我们可以看出来，所有的正例都是由「同一个句子」过了两次模型得到的。这就会造成一个问题：模型会更倾向于认为，长度相同的句子就代表一样的意思。由于数据样本是随机选取的，那么很有可能在一个 batch 内采样到的句子长度是不相同的。
 
@@ -288,38 +366,6 @@
 ![img](./FAQ问答.assets/simcse缺点.png)
 
 
-
-## 3.3、m3e
-
-
-
-## 3.4、bge
-
-3.5、sentence
-
-3.6、bert whitening
-
-## 四、字面和向量库：
-
-
-
-### 4.1、miluvs
-
-​	（1）[milvus_v1.1.1-cpu使用说明书](https://milvus.io/docs/v1.1.1/milvus_docker-cpu.md)
-
-​	（2）[milvus开源的数据库](https://mp.weixin.qq.com/s?__biz=MzAwOTU4NzM5Ng==&mid=2455772667&idx=1&sn=ead133d70c53c2dbe1483921c1597cc9&chksm=8cc9e250bbbe6b460ccc5a9faa5274ddf48861efd5484fd5b6445661c9fe06ad632732b463c2&scene=178&cur_album_id=3006183510551822339#rd)
-
-
-
-### 4.2、faiss
-
-​	（1）[faiss开源的向量索引库](https://mp.weixin.qq.com/s?__biz=MzAwOTU4NzM5Ng==&mid=2455772648&idx=1&sn=6bfb1c6ee9b7ca5e21fc76583e5d4680&chksm=8cc9e243bbbe6b55b4c207d997bafe75f364aa21cbcf4f7efb09ba39460441dbcc67e2e224f3&scene=178&cur_album_id=3006183510551822339#rd)
-
-
-
-
-
-### 4.3、[elasticsearch](https://zhangnn520.github.io/%E5%B7%A5%E5%85%B7%E5%BA%93%E4%BD%BF%E7%94%A8/elasticsearch.html)
 
 
 
@@ -376,3 +422,5 @@
 ​	13、https://www.zhihu.com/column/hellonlp
 
 ​	14、https://www.zhihu.com/question/526288696/answer/2848119153
+
+​	15、https://mp.weixin.qq.com/s/YDrPFMnG1ekNyNNq3ea7Iw
