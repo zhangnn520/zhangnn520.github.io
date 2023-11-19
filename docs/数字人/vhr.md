@@ -134,9 +134,21 @@
 
 ## 5.1、专栏
 
-（1）[知来者逆的博客](https://blog.csdn.net/matt45m/category_12465937.html)
+​	（1）[知来者逆的博客](https://blog.csdn.net/matt45m/category_12465937.html)
 
-（2）[Python AI数字人](https://blog.csdn.net/qq_20288327/category_10398892.html)
+​	（2）[Python AI数字人](https://blog.csdn.net/qq_20288327/category_10398892.html)
+
+​	（3）[公众号“饱雪猿”](https://yv2c3kamh3y.feishu.cn/sheets/CmPAsSNLghiCvFtOeCjcneqVnCh?sheet=0266a6)
+
+​		这个公众号里面的文章都挺好的，我选取几个数字人项目。
+
+| 名称                                | 教程                                                         | 链接                                                     | 公众号提取码 |
+| :---------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------- | ------------ |
+| AI主播虚拟人技术实现Wav2lip         | https://yv2c3kamh3y.feishu.cn/docx/S5AldFeZUoMpU5x8JAuctgPsnfg | https://pan.baidu.com/s/1hYJMJC-ZklqGr9kXZLqpNg?pwd=sle8 | 5301         |
+| wav2lip模型训练附完整教程和过程录制 | https://yv2c3kamh3y.feishu.cn/docx/IprKd63SjoyqlLxsjfJcfIlXnMb | https://pan.baidu.com/s/1_6oFpot3sBHLKsd7KuBHGA?pwd=o3hh | 8100         |
+| wav2lip_GFP_GAN教程和资料包         | https://yv2c3kamh3y.feishu.cn/docx/I8OLdvQSuoSRHXx5Hf2cJL32nE6 | https://pan.baidu.com/s/1DKMRvSeIsEQSOEhb48XUrQ?pwd=3ogg | 6102         |
+| AI数字人虚拟人主播sadtalker教程     | https://yv2c3kamh3y.feishu.cn/docx/Zl4adtdEAoFhV3xCyZGcddiMn1g | https://pan.baidu.com/s/1uhWq1zXbxhWlqVb38VPYTg?pwd=i2oz | 6151         |
+| heygen数字人制作教程                | https://yv2c3kamh3y.feishu.cn/docx/S5nddpQnmo8frZxZ2fqc1D5Dnpd | https://chat-shared2.zhile.io/shared.html                | 009          |
 
 
 
